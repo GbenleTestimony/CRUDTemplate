@@ -1,6 +1,12 @@
-My first work using node as a server for some authorization. no bcrypt, passwords were stored directly, i had some troubles with the frontend not receiving JSON format of data. solved by the line:
-require('dotenv').config({quiet: true}) in the server.js file.
-learnt the structure of an ideal backend. 
-NB: bcryptjs was actually installed
-and yeah, pm2 is also installed for keeping the server running.
-Okay, Weldone Inioluwa.
+25 users in the users collection
+Actually coded the update all fields for user syntax off vibe-coding;
+Tested all api endpoints ( create, login and update) with postman.
+
+sorted out server.js issues.
+by
+. deleting and installing package.json
+. also set type to modules
+. killed all ports
+. adding the right routes to the dev and start keys of the script .... in package.json
+
+
