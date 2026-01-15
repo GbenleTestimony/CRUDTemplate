@@ -30,16 +30,17 @@ export const loginUser = async (req, res) => {
 };
 export const updateUser = async (req, res) => {
   // Implementation for updating user details
-  const { name, newPassword } = req.body;
+  const { name, newName, newPassword } = req.body;
 
   try {
     const possible = await User.findOne({name})
     if(possible){
       console.log('on it')
       const newHash = await bcrypt.hash(newPassword, 10);
-      const updatedUser = await User.updateOne({name: name}, {password: newHash})
+      console.log(possible);
+      const updatedUser = await User.updateOne({_id: possible._id}, {name: newName, password: newHash})
         const updateResponse ={
-        name: updatedUser.id,
+        name: updatedUser.name,
         _id: updatedUser._id
       };
       return res.status(201).json({ message: "Password updated", response: updateResponse});

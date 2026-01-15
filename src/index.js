@@ -30,7 +30,7 @@ app.use('/login', loginUser); // ./login here shows why the route in the router 
 app.use('/create', createUser);
 app.use('/update', updateUser);
 
-const PORT= process.env.PORT || 3000;
+const PORT= process.env.PORT || 8000;
 
 //Starting server
 app.listen(PORT, ()=> {
