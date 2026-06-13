@@ -1,7 +1,12 @@
 import jwt from "jsonwebtoken";
-export const accessToken=(userId)=>{
-    return jwt.sign({userId},process.env.ACCESS_SECRET, {expiresIn:"10m"});
+
+export const accessToken=(user)=>{
+    return jwt.sign(user, process.env.ACCESS_SECRET, {
+        algorithm: 'HS256', 
+        expiresIn:"10m"});
 };
-export const refreshToken=(userId)=>{
-    return jwt.sign({userId}, process.env.REFRESH_SECRET, {expiresIn:'3d'});
+export const refreshToken=(user)=>{
+    return jwt.sign(user, process.env.REFRESH_SECRET, {
+        algorithm: 'HS256',
+        expiresIn:'10d'});
 };

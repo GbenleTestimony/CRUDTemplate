@@ -1,5 +1,5 @@
 import express from 'express'
-import { updateUser } from '../controllers/auth.controller.js';
+import { updateUser } from '../controllers/updateUserController.js';
 const router = express.Router();
 
 router.post('/', updateUser);
