@@ -1,4 +1,4 @@
- {
+{
   "name": "mybackend",
   "version": "1.0.0",
   "description": "My first work using node as a server for some authorization. no bcrypt, passwords were stored directly, i had some troubles with the frontend not receiving JSON format of data. solved by the line:\r require('dotenv').config({quiet: true}) in the server.js file.\r learnt the structure of an ideal backend. \r NB: bcryptjs was actually installed\r and yeah, pm2 is also installed for keeping the server running.\r Okay, Weldone Inioluwa.",
@@ -121,5 +121,8 @@
   "bugs": {
     "url": "https://github.com/GbenleTestimony/full-stack-backend-project/issues"
   },
-  "homepage": "https://github.com/GbenleTestimony/full-stack-backend-project#readme"
+  "homepage": "https://github.com/GbenleTestimony/full-stack-backend-project#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
