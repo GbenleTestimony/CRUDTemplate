@@ -16,10 +16,10 @@ const app = express();
 connectDB();
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5500',
+    origin: 'http://127.0.0.1:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true
-}));// CORS gives the frontend it's required access.
+}));// CORS gives the frontend its required access.
 
 
 app.use(express.json());// keeps all responses in json
@@ -47,21 +47,25 @@ app.use(express.json());// keeps all responses in json
 // veriFy()
 // Routes
 app.get('/', (req, res) => {
-    res.json({ message: 'Otun gbe mi de beee' });// default route and response in the browser
+    res.json({ message: {
+        statusCode: "200",
+        message: "success"
+    } });
 })
-app.use('/login', loginUser); // ./login here shows why the route in the router is only '/
+app.use('/login', loginUser);
 app.use('/admin', veriFy, (req, res)=>{
-    res.json({mesaage: 'admin ti de o!',
+    res.json({mesaage: 'Admin Status Verified, Access Granted',
         name: `${req}` 
     })
     console.log(req.user.name)
 })
 app.use('/create', createUser);
-app.use('/update', updateUser);
+app.use('/update', veriFy,  updateUser);
 
-const PORT= process.env.PORT || 8000;
-console.log('home')
-//Starting server
-app.listen(PORT, ()=> {
+const PORT= process.env.PORT || 3000;
+const HOST = process.env.HOST || 8000;
+
+
+app.listen(PORT, HOST, ()=> {
     console.log(`server is running on port ${PORT}`)
-})// This keeps the backend alive on the specified port
+})
