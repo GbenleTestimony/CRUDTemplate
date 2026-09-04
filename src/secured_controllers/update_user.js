@@ -1,5 +1,8 @@
+//you need token validation access this endpoint
+
+
 import bcrypt from "bcrypt";
-import User from "../models/user.model.js";
+import User from "../Models/user.js";
 
 export const updateUser = async (req, res) => {
   // Implementation for updating user details
