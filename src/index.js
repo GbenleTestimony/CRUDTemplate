@@ -8,9 +8,9 @@ import jwt from "jsonwebtoken";
 import connectDB from "./Config_files/db.js";
 
 
-import adminRouter from "./routes/admin_routes";
-import regularRouter from "./routes/regular_routes";
-import securedRouter from "./routes/regular_secured_Routes";
+import adminRouter from "./Routes/admin_routes";
+import regularRouter from "./Routes/regular_routes";
+import securedRouter from "./Routes/regular_secured_Routes";
 
 // Creating the server
 const app = express();
