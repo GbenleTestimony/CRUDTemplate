@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { accessToken } from "../utils/tokens.js";
 
 
-export const loginUser = async (req, res) => {
+export const login = async (req, res) => {
   const { name, password } = req.body;
 
   try {
