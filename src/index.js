@@ -5,12 +5,12 @@ import express from "express"; // handling requests
 import cors from "cors";
 import jwt from "jsonwebtoken";
 
-import connectDB from "./Config_files/db.js";
+import connectDB from "./Configfiles/db.js";
 
 
-import adminRouter from "./routes/admin_routes.js";
-import regularRouter from "./routes/regular_routes.js";
-import securedRouter from "./routes/regular_secured_routes.js";
+import adminRouter from "./routes/adminroutes.js";
+import regularRouter from "./routes/regularroutes.js";
+import securedRouter from "./routes/regularsecuredroutes.js";
 
 // Creating the server
 const app = express();
