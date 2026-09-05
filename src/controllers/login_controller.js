@@ -1,4 +1,4 @@
-import User from "../models/user.model.js";
+import User from "../models/users.js";
 import bcrypt from "bcryptjs";
 
 import { accessToken, refreshToken } from "../Utils/tokens.js";

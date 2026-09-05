@@ -3,11 +3,11 @@ dotenv.config({silent:true}, {path: '/custom/path/.env'})
 import path from 'path'; // what the hell is this for?
 import express from "express"; // for routing, handling requests
 import cors from "cors";
-import { veriFy } from "./middleware/adminVerification.js";
+import { veriFy } from "./middleware/admin_verification.js";
 import connectDB from "./config/db.js";
-import loginUser from "./routes/login.routes.js";
-import createUser from "./routes/signup.routes.js";
-import updateUser from "./routes/update.routes.js";
+import loginUser from "./Routes/login.routes.js";
+import createUser from "./Routes/signup.routes.js";
+import updateUser from "./Routes/update.routes.js";
 import jwt from "jsonwebtoken";
 // Creating the server
 const app = express();
