@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     } });
 });
 
-
+// Standard Routers
 app.use('/regular', regularRouter );
 app.use('/protected', securedRouter);
 app.use('/admin', adminRouter);
