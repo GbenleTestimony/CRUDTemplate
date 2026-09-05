@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());// keeps all responses in json
 // Connect Database
 connectDB();
-dotenv.config({silent:true}, {path: '/custom/path/.env'})
+dotenv.config({silent:true, path: '/custom/path/.env'})
 app.use(cors({
     origin: 'http://127.0.0.1:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -23,7 +23,7 @@ app.use(cors({
 
 // Home Route
 app.get('/', (req, res) => {
-    res.status('200').json({ message: {
+    res.status(200).json({ message: {
         message: "server hit"
     } });
 });
