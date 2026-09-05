@@ -1,7 +1,7 @@
 import User from "../models/users.js";
 import bcrypt from "bcryptjs";
 
-import { accessToken, refreshToken } from "../Utils/tokens.js";
+import { accessToken, refreshToken } from "../utils/tokens.js";
 
 
 export const loginUser = async (req, res) => {
