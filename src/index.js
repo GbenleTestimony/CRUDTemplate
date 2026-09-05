@@ -1,7 +1,7 @@
 import dotenv from "dotenv" // gets data from the environment
 import express from "express"; //handles requests
 import cors from "cors";
-import connectDB from "./config/db.js";
+import connectDB from "./config_files/db.js";
 
 import regularRouter from "./Routes/regular_routes.js";
 import securedRouter from "./Routes/regular_secured_routes.js";
