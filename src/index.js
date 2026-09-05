@@ -1,44 +1,77 @@
-import dotenv from "dotenv"
+import dotenv from "dotenv" // gets data from the environment
 dotenv.config({silent:true}, {path: '/custom/path/.env'})
-
-import express from "express"; // handling requests
+import path from 'path'; // what the hell is this for?
+import express from "express"; // for routing, handling requests
 import cors from "cors";
+import { veriFy } from "./middleware/adminVerification.js";
+import connectDB from "./config/db.js";
+import loginUser from "./routes/login.routes.js";
+import createUser from "./routes/signup.routes.js";
+import updateUser from "./routes/update.routes.js";
 import jwt from "jsonwebtoken";
 
-import connectDB from "./Configfiles/db.js";
+import connectDB from "./Config_files/db.js";
 
 
-import adminRouter from "./routes/adminroutes.js";
-import regularRouter from "./routes/regularroutes.js";
-import securedRouter from "./routes/regularsecuredroutes.js";
+import adminRouter from "./routes/admin_routes";
+import regularRouter from "./routes/regular_routes";
+import securedRouter from "./routes/regular_secured_Routes";
 
 // Creating the server
 const app = express();
+
 // Connect Database
 connectDB();
-// Cross-Origin security
+
 app.use(cors({
     origin: 'http://127.0.0.1:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true
-}));
-// keeps all responses in json
-app.use(express.json());
+}));// CORS gives the frontend its required access.
 
 
+app.use(express.json());// keeps all responses in json
+
+// // const veriFy = (req, res, next) => {
+//     const heaDer = req.header['authorization'];
+    
+//     const token = heaDer && heaDer.split(' ')[1];
+
+//     console.log(token);
+//     if(!token){
+//         return res.status(401).json({error:'Token Error'});
+//     }
+//     try{
+//         console.log(token)
+//         const payload= jwt.verify(token, process.env.ACCESS_SECRET)
+//         console.log('Worked here!')
+//         console.log(req)
+//         req.user= payload
+//     }catch(err){
+//         return res.status(403).json({err:'Token is invalid or expired'})
+//     }
+//     next()
+// }
+// veriFy()
 // Routes
-// Ensure to remove the '.get' later and swap "/regular" for "/" 
 app.get('/', (req, res) => {
-    res.status('200').json({ message: {
-        message: "Endpoint Hit"
+    res.json({ message: {
+        statusCode: "200",
+        message: "success"
     } });
 })
-app.use('/regular', regularRouter);
-app.use('/admin', adminRouter);
-app.use('/secure', securedRouter);
+app.use('/login', loginUser);
+app.use('/admin', veriFy, (req, res)=>{
+    res.json({mesaage: 'Admin Status Verified, Access Granted',
+        name: `${req}` 
+    })
+    console.log(req.user.name)
+})
+app.use('/create', createUser);
+app.use('/update', veriFy,  updateUser);
 
 const PORT= process.env.PORT || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
+const HOST = process.env.HOST || 8000;
 
 
 app.listen(PORT, HOST, ()=> {
