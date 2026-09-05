@@ -8,7 +8,7 @@ import securedRouter from "./Routes/regular_secured_routes.js";
 import adminRouter from "./Routes/admin_routes.js";
 
 
-// Creating the server
+// Creates the server
 const app = express();
 app.use(express.json());// keeps all responses in json
 // Connect Database
