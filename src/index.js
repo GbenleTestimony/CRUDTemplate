@@ -1,69 +1,40 @@
 import dotenv from "dotenv" // gets data from the environment
-dotenv.config({silent:true}, {path: '/custom/path/.env'})
-import path from 'path'; // what the hell is this for?
-import express from "express"; // for routing, handling requests
+import express from "express"; //handles requests
 import cors from "cors";
-import { veriFy } from "./middleware/admin_verification.js";
 import connectDB from "./config/db.js";
-import loginUser from "./Routes/login.routes.js";
-import createUser from "./Routes/signup.routes.js";
-import updateUser from "./Routes/update.routes.js";
-import jwt from "jsonwebtoken";
+
+import regularRouter from "./Routes/regular_routes.js";
+import securedRouter from "./Routes/regular_secured_routes.js";
+import adminRouter from "./Routes/admin_routes.js";
+
+
 // Creating the server
 const app = express();
-
+app.use(express.json());// keeps all responses in json
 // Connect Database
 connectDB();
-
+dotenv.config({silent:true}, {path: '/custom/path/.env'})
 app.use(cors({
     origin: 'http://127.0.0.1:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials:true
-}));// CORS gives the frontend its required access.
+}));
 
 
-app.use(express.json());// keeps all responses in json
-
-// // const veriFy = (req, res, next) => {
-//     const heaDer = req.header['authorization'];
-    
-//     const token = heaDer && heaDer.split(' ')[1];
-
-//     console.log(token);
-//     if(!token){
-//         return res.status(401).json({error:'Token Error'});
-//     }
-//     try{
-//         console.log(token)
-//         const payload= jwt.verify(token, process.env.ACCESS_SECRET)
-//         console.log('Worked here!')
-//         console.log(req)
-//         req.user= payload
-//     }catch(err){
-//         return res.status(403).json({err:'Token is invalid or expired'})
-//     }
-//     next()
-// }
-// veriFy()
-// Routes
+// Home Route
 app.get('/', (req, res) => {
-    res.json({ message: {
-        statusCode: "200",
-        message: "success"
+    res.status('200').json({ message: {
+        message: "server hit"
     } });
-})
-app.use('/login', loginUser);
-app.use('/admin', veriFy, (req, res)=>{
-    res.json({mesaage: 'Admin Status Verified, Access Granted',
-        name: `${req}` 
-    })
-    console.log(req.user.name)
-})
-app.use('/create', createUser);
-app.use('/update', veriFy,  updateUser);
+});
+
+
+app.use('/regular', regularRouter );
+app.use('/protected', securedRouter);
+app.use('/admin', adminRouter);
 
 const PORT= process.env.PORT || 3000;
-const HOST = process.env.HOST || 8000;
+const HOST = process.env.HOST || '0.0.0.0';
 
 
 app.listen(PORT, HOST, ()=> {
