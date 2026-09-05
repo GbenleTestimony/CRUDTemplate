@@ -1,6 +1,8 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+
 import { accessToken, refreshToken } from "../Utils/tokens.js";
+
 
 export const loginUser = async (req, res) => {
   const { name, password } = req.body;

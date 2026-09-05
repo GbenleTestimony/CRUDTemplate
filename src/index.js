@@ -9,14 +9,6 @@ import loginUser from "./routes/login.routes.js";
 import createUser from "./routes/signup.routes.js";
 import updateUser from "./routes/update.routes.js";
 import jwt from "jsonwebtoken";
-
-import connectDB from "./Config_files/db.js";
-
-
-import adminRouter from "./routes/admin_routes";
-import regularRouter from "./routes/regular_routes";
-import securedRouter from "./routes/regular_secured_Routes";
-
 // Creating the server
 const app = express();
 

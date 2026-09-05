@@ -1,10 +1,8 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-<<<<<<<< HEAD:src/Regularcontrollers/login.js
+
 import { accessToken, refreshToken } from "../Utils/tokens.js";
-========
-import { accessToken, refreshToken } from "../utils/generateToken.js";
->>>>>>>> parent of 1aa9f24 (whole src folder restrcturing + adanced routing):src/controllers/loginController.js
+
 
 export const loginUser = async (req, res) => {
   const { name, password } = req.body;
