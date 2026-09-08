@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const tokenSchema = mongoose.Schema({
-    value:{
+    rToken:{
         type: String,
         required: true
     },

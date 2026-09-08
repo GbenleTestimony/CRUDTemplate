@@ -13,9 +13,9 @@ const userSchema = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
-    status:{
-        type:String,
-        default:"pending"
+    role:{
+        type: String,
+        default: 'user'
     }
 });
 
