@@ -22,7 +22,7 @@ app.use(cors({
 
 
 // Home Route
-app.get('/', (req, res) => {
+app.get('/', (res) => {
     res.status(200).json({ message: {
         message: "server hit"
     } });
