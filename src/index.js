@@ -17,7 +17,7 @@ dotenv.config({silent:true, path: '/custom/path/.env'})
 app.use(cors({
     //origin: 'http://127.0.0.1:5173', 
 origin: '*'
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    //methods: ['GET', 'POST', 'PUT', 'DELETE'],
     //credentials:true
 }));
 
