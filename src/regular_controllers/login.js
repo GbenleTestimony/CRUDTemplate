@@ -30,10 +30,10 @@ export const login = async (req, res) => {
     const aToken = accessToken(payload);
     const rToken = refreshToken(payload);
 
-    const storeToken = await Token.create({rToken});
-    if(!storeToken){
-      console.log('could not store refresh token')
-    }
+    // const storeToken = await Token.create({rToken});
+    // if(!storeToken){
+    //   console.log('could not store refresh token')
+    // }
 
     res.cookie('refreshToken', rToken,{
       httpOnly: true,
