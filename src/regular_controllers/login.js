@@ -41,7 +41,7 @@ export const login = async (req, res) => {
       sameSite: 'strict',
       maxAge: 10 * 24 * 60 * 1000
     })
-    return res.json(
+    return res.status(200).json(
       {  
        message: 'Success', 
        accessToken: aToken,
