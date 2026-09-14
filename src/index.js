@@ -26,7 +26,6 @@ origin: '*'
 app.get('/', (req, res) => {
 const { name } = req.body;
 console.log(name);
-    res.status(200).json({ message: "Welcome"});
 });
 
 // Standard Routers
