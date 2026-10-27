@@ -24,7 +24,7 @@ app.use(cors({
 
 // Home Route
 app.get('/', (req, res) => {
-const nam = JSON.parse(req.body);
+const nam = JSON.parse(req);
 res.json({"name": "omo"});
 console.log(name);
 });
