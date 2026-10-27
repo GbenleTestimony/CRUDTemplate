@@ -25,7 +25,7 @@ app.use(cors({
 // Home Route
 app.get('/', (req, res) => {
 const { name } = req.body.name;
-res.json({"name": name})
+return res.json({"name": name})
 console.log(name);
 });
 
