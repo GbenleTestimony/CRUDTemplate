@@ -26,7 +26,7 @@ app.use(cors({
 app.get('/', (req, res) => {
 const nam = JSON.parse(req);
 res.json({"name": "omo"});
-console.log(name);
+console.log(nam);
 });
 
 // Standard Routers
